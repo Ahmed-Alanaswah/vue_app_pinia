@@ -1,18 +1,20 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>home page</h1>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { counterStore } from "@/store/counterStore";
+import { mapState } from "pinia";
 
 export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
+  computed: {
+    ...mapState(counterStore, ["count"]),
+  },
+
+  mounted() {
+    console.log(this.count);
   },
 };
 </script>
